@@ -6,6 +6,22 @@ const MovieCardDetails = () => {
   // console.log(loadedOneMovie);
   const navigate = useNavigate();
 
+  const handleAddToFavorites = async (movieInfo) => {
+    // console.log(movieInfo);
+    const response = await fetch(`http://localhost:5000/favMovies`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(movieInfo),
+    });
+    const data = await response.json();
+    // console.log(data);
+    if (data.insertedId) {
+      toast.success("add to favorites list done");
+    }
+  };
+
   const handleDeleteMovie = async (id) => {
     // console.log(id);
     const res = await fetch(`http://localhost:5000/movies/${id}`, {
@@ -35,7 +51,12 @@ const MovieCardDetails = () => {
             <p>Genre : {loadedOneMovie?.genre}</p>
             <p>Rating : {loadedOneMovie?.rating}</p>
             <div className="flex items-center gap-6">
-              <button className="btn btn-success">Add To Favorites</button>
+              <button
+                onClick={() => handleAddToFavorites(loadedOneMovie)}
+                className="btn btn-success"
+              >
+                Add To Favorites
+              </button>
               <button
                 onClick={() => handleDeleteMovie(loadedOneMovie?._id)}
                 className="btn btn-error"

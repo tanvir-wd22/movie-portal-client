@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../providers/AuthContextProvider";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { validatePassword } from "../utilities/helperFunctions";
 
 const Register = () => {
   const { registerUser, updateProfileUser } = useContext(AuthContext);
@@ -14,6 +15,10 @@ const Register = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     // console.log(name, photo, email, photo);
+
+    if (!validatePassword(password)) {
+      return;
+    }
 
     try {
       // step 1: register user

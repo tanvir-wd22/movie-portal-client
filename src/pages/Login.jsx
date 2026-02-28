@@ -1,14 +1,20 @@
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthContextProvider";
 import toast from "react-hot-toast";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { loginUser, googleLogin } = useContext(AuthContext);
+  const location = useLocation();
+  // console.log(location);
+  const navigate = useNavigate();
+  // console.log(navigate);
 
   const handleGoogleLogin = async () => {
     try {
       const result = await googleLogin();
       // console.log(result.user);
+      navigate(location?.state ? location.state : "/");
       toast.success(result?.user?.displayName || "google login done");
     } catch (error) {
       // console.log(error.message);
@@ -23,6 +29,7 @@ const Login = () => {
     // console.log(email, password);
     try {
       const result = await loginUser(email, password);
+      navigate(location?.state ? location.state : "/");
       toast.success(result?.user?.displayName || "user login done");
     } catch (error) {
       // console.log(error);

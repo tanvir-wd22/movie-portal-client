@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { Rating } from "react-simple-star-rating";
+import { AuthContext } from "../providers/AuthContextProvider";
 
 const AddMovie = () => {
+  const { user } = useContext(AuthContext);
+  // console.log(user);
   const [rating, setRating] = useState(0);
   // Catch Rating value
   const handleRatingValue = (rate) => {
@@ -10,6 +13,7 @@ const AddMovie = () => {
   };
   const handleAddMovieForm = async (e) => {
     e.preventDefault();
+    const userEmail = user?.email || "guestUser@mail.com";
     const poster = e.target.poster.value;
     const title = e.target.title.value;
     const genre = e.target.genre.value;
@@ -18,6 +22,7 @@ const AddMovie = () => {
     const rating = e.target.rating.value;
     const summary = e.target.summary.value;
     const movieInfo = {
+      userEmail,
       poster,
       title,
       genre,

@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthContextProvider";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const { registerUser, updateProfileUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleRegisterForm = async (e) => {
     e.preventDefault();
@@ -19,6 +21,7 @@ const Register = () => {
       toast.success(result?.user?.displayName || "user register done");
       // step 2: update user
       await updateProfileUser(name, photo);
+      navigate("/");
       toast.success("profile updated done");
     } catch (error) {
       // console.log(error);
@@ -26,7 +29,6 @@ const Register = () => {
     }
   };
 
-  
   return (
     <div className="flex justify-center items-center">
       <form onSubmit={handleRegisterForm}>

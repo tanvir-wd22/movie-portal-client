@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
-const FeaturedMovieCard = ({ movieItem }) => {
-  console.log(movieItem);
+const TopRatedMovieCard = ({ movieItem }) => {
+  // console.log(movieItem);
   return (
     <div>
       <div className="card bg-gray-200 shadow-sm h-96">
@@ -33,4 +33,4 @@ const FeaturedMovieCard = ({ movieItem }) => {
   );
 };
 
-export default FeaturedMovieCard;
+export default TopRatedMovieCard;

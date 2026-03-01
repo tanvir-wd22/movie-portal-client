@@ -9,7 +9,7 @@ const FavoriteMovieCard = ({ movieItem, handleDeleteFavoriteMovie }) => {
         <div className="card-body">
           <h2 className="card-title">
             {movieItem?.title}
-            <div className="badge badge-secondary">{movieItem?.rating}</div>
+            <div className="badge badge-warning">{movieItem?.rating}</div>
           </h2>
           <p>{movieItem?.summary}</p>
           <div className="card-actions justify-between">

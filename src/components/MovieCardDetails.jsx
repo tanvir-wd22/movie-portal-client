@@ -14,13 +14,13 @@ const MovieCardDetails = () => {
   // console.log(navigate);
 
   const handleAddToFavorites = async (movieInfo) => {
-    console.log(movieInfo);
+    // console.log(movieInfo);
     // ✅ Always remove _id before inserting into a new collection
-    // ✅ Remove _id from movieInfo before sending
     const { _id, firstUserEmail, ...withoutFirstUserIdEmail } = movieInfo;
-    console.log(_id, firstUserEmail);
+    // console.log(_id, firstUserEmail);
+    toast.success(`first user ${firstUserEmail} & ${_id} `);
     const favoriteMovieInfo = { ...withoutFirstUserIdEmail, secondUserEmail };
-    console.log(favoriteMovieInfo);
+    // console.log(favoriteMovieInfo);
     const response = await fetch(`http://localhost:5000/favMovies`, {
       method: 'POST',
       headers: {

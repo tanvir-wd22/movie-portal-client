@@ -1,6 +1,7 @@
-import { useContext } from "react";
-import { AuthContext } from "../providers/AuthContextProvider";
-import { Navigate, useLocation } from "react-router-dom";
+import { useContext } from 'react';
+import { AuthContext } from '../providers/AuthContextProvider';
+import { Navigate, useLocation } from 'react-router-dom';
+import Spinner from '../components/Spinner';
 
 const PrivateRouter = ({ children }) => {
   const { loading, user } = useContext(AuthContext);
@@ -10,13 +11,7 @@ const PrivateRouter = ({ children }) => {
 
   // 1st check loading
   if (loading) {
-    <div>
-      <span className="loading loading-spinner loading-xs"></span>
-      <span className="loading loading-spinner loading-sm"></span>
-      <span className="loading loading-spinner loading-md"></span>
-      <span className="loading loading-spinner loading-lg"></span>
-      <span className="loading loading-spinner loading-xl"></span>
-    </div>;
+    return <Spinner></Spinner>;
   }
   // 2nd check user
   if (user) {

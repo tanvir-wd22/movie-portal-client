@@ -1,5 +1,5 @@
 import StaticSlider from '../components/StaticSlider';
-import FeaturedMovies from '../components/FeaturedMovies';
+import TopRatedMovies from '../components/TopRatedMovies';
 import { useLoaderData } from 'react-router-dom';
 const Home = () => {
   const loadedTopMovies = useLoaderData();
@@ -10,7 +10,7 @@ const Home = () => {
         <StaticSlider></StaticSlider>
       </section>
       <section>
-        <FeaturedMovies loadedTopMovies={loadedTopMovies}></FeaturedMovies>
+        <TopRatedMovies loadedTopMovies={loadedTopMovies}></TopRatedMovies>
       </section>
     </div>
   );

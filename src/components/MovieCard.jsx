@@ -9,7 +9,7 @@ const MovieCard = ({ movieItem }) => {
           <img
             src={movieItem?.poster}
             alt="movie"
-            className="rounded-xl h-40"
+            className="rounded-xl h-40 w-full"
           />
         </figure>
         <div className="card-body items-center text-center">

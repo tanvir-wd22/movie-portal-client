@@ -13,7 +13,7 @@ const Login = () => {
   const handleGoogleLogin = async () => {
     try {
       const result = await googleLogin();
-      // console.log(result.user);
+      console.log(result.user);
       navigate(location?.state ? location.state : "/");
       toast.success(result?.user?.displayName || "google login done");
     } catch (error) {

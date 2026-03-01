@@ -1,7 +1,7 @@
-import { useContext, useState } from "react";
-import toast from "react-hot-toast";
-import { Rating } from "react-simple-star-rating";
-import { AuthContext } from "../providers/AuthContextProvider";
+import { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
+import { Rating } from 'react-simple-star-rating';
+import { AuthContext } from '../providers/AuthContextProvider';
 
 const AddMovie = () => {
   const { user } = useContext(AuthContext);
@@ -11,9 +11,10 @@ const AddMovie = () => {
   const handleRatingValue = (rate) => {
     setRating(rate);
   };
+ 
   const handleAddMovieForm = async (e) => {
     e.preventDefault();
-    const userEmail = user?.email || "guestUser@mail.com";
+    const email = user?.email || 'guestUser@mail.com';
     const poster = e.target.poster.value;
     const title = e.target.title.value;
     const genre = e.target.genre.value;
@@ -22,7 +23,7 @@ const AddMovie = () => {
     const rating = e.target.rating.value;
     const summary = e.target.summary.value;
     const movieInfo = {
-      userEmail,
+      email,
       poster,
       title,
       genre,
@@ -34,16 +35,16 @@ const AddMovie = () => {
     // console.log(movieInfo);
     // send movie data to server
     const res = await fetch(`http://localhost:5000/movies`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(movieInfo),
     });
     const data = await res.json();
     // console.log(data);
     if (data.insertedId) {
-      toast.success("movie added to db");
+      toast.success('movie added to db');
     }
   };
 
@@ -110,8 +111,8 @@ const AddMovie = () => {
                   onClick={handleRatingValue}
                   initialValue={rating}
                   size={20}
-                  SVGstyle={{ display: "inline" }}
-                  style={{ display: "flex", flexDirection: "row" }}
+                  SVGstyle={{ display: 'inline' }}
+                  style={{ display: 'flex', flexDirection: 'row' }}
                 />
                 <span className="text-sm text-gray-400">{rating} / 5</span>
               </div>

@@ -1,17 +1,66 @@
-import { useLoaderData } from 'react-router-dom';
-import FavoriteCard from '../components/FavoriteCard';
+import FavoriteMovieCard from '../components/FavoriteMovieCard';
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../providers/AuthContextProvider';
+import toast from 'react-hot-toast';
 
 const MyFavorites = () => {
-  const loadedFavMovies = useLoaderData();
-  // console.log(loadedFavMovies);
+  const { user } = useContext(AuthContext);
+  // console.log(user);
+  const [favoritesList, setFavoritesList] = useState([]);
+
+  const handleDeleteFavoriteMovie = async (id) => {
+    // console.log(id);
+    const response = await fetch(`http://localhost:5000/favMovies/${id}`, {
+      method: 'DELETE',
+    });
+    const data = await response.json();
+    // console.log(data);
+    if (data.deletedCount > 0) {
+      toast.success('deleted from favorites done');
+    }
+    const remainingList = favoritesList.filter(
+      (movieItem) => movieItem._id !== id
+    );
+    setFavoritesList(remainingList);
+  };
+
+  // ===============================================
+  //      😕 What is the difference?
+
+  // // req.params  → used when email is INSIDE the route path
+  // GET /favMovies/alice@gmail.com
+  //                ↑
+  //                this is params
+
+  // // req.query  → used when email is AFTER ? in the URL
+  // GET /favMovies?email=alice@gmail.com
+  //                ↑
+  //                this is query
+  // ===============================================
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/favMovies?email=${user.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setFavoritesList(data);
+      });
+  }, [user?.email]);
+
+  // console.log(favoritesList);
+
   return (
     <div>
+      <h1 className="text-center text-2xl font-semibold mb-4">
+        Your Favorite List : {favoritesList.length}
+      </h1>
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        {loadedFavMovies.map((movieItem) => (
-          <FavoriteCard
+        {favoritesList.map((movieItem) => (
+          <FavoriteMovieCard
             key={movieItem._id}
             movieItem={movieItem}
-          ></FavoriteCard>
+            handleDeleteFavoriteMovie={handleDeleteFavoriteMovie}
+          ></FavoriteMovieCard>
         ))}
       </div>
     </div>

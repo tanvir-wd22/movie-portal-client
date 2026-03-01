@@ -1,37 +1,43 @@
-import toast from "react-hot-toast";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import toast from 'react-hot-toast';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 
 const MovieCardDetails = () => {
   const loadedOneMovie = useLoaderData();
   // console.log(loadedOneMovie);
   const navigate = useNavigate();
+  // console.log(navigate);
 
   const handleAddToFavorites = async (movieInfo) => {
-    // console.log(movieInfo);
+    console.log(movieInfo);
+    // ✅ Always remove _id before inserting into a new collection
+    // ✅ Remove _id from movieInfo before sending
+    const { _id, ...withoutPreviousPostId } = movieInfo;
+    const favoriteMovieInfo = { ...withoutPreviousPostId };
+    console.log(favoriteMovieInfo);
     const response = await fetch(`http://localhost:5000/favMovies`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(movieInfo),
+      body: JSON.stringify(favoriteMovieInfo),
     });
     const data = await response.json();
-    // console.log(data);
+    console.log(data);
     if (data.insertedId) {
-      toast.success("add to favorites list done");
+      toast.success('add to favorites list done');
     }
   };
 
   const handleDeleteMovie = async (id) => {
     // console.log(id);
     const res = await fetch(`http://localhost:5000/movies/${id}`, {
-      method: "DELETE",
+      method: 'DELETE',
     });
     const data = await res.json();
     // console.log(data);
     if (data.deletedCount > 0) {
-      toast.success("delete movie successfully");
-      navigate("/allMovies");
+      toast.success('delete movie successfully');
+      navigate('/allMovies');
     }
   };
 

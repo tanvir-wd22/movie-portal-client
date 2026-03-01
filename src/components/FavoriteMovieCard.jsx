@@ -1,10 +1,10 @@
-const FavoriteCard = ({ movieItem }) => {
+const FavoriteMovieCard = ({ movieItem, handleDeleteFavoriteMovie }) => {
   // console.log(movieItem);
   return (
     <div>
       <div className="card bg-base-100 shadow-sm">
         <figure>
-          <img src={movieItem?.poster} />
+          <img src={movieItem?.poster} className="h-40 w-full" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">
@@ -24,7 +24,12 @@ const FavoriteCard = ({ movieItem }) => {
             </div>
           </div>
           <div className="flex justify-center items-center">
-            <button className="btn btn-sm btn-error">Delete Favorite</button>
+            <button
+              onClick={() => handleDeleteFavoriteMovie(movieItem?._id)}
+              className="btn btn-sm btn-error"
+            >
+              Delete Favorite
+            </button>
           </div>
         </div>
       </div>
@@ -32,4 +37,4 @@ const FavoriteCard = ({ movieItem }) => {
   );
 };
 
-export default FavoriteCard;
+export default FavoriteMovieCard;

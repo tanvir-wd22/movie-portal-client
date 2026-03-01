@@ -46,7 +46,6 @@ const PublicRouter = createBrowserRouter([
             <MyFavorites></MyFavorites>
           </PrivateRouter>
         ),
-        loader: () => fetch(`http://localhost:5000/favMovies`),
       },
       {
         path: '/login',

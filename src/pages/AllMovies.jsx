@@ -9,7 +9,9 @@ const AllMovies = () => {
   const [searchInput, setSearchInput] = useState('');
 
   useEffect(() => {
-    fetch(`http://localhost:5000/movies?search=${searchInput}`)
+    fetch(
+      `https://movie-portal-server-931s.onrender.com/movies?search=${searchInput}`
+    )
       .then((res) => res.json())
       .then((data) => setAllMovies(data));
     //  ✅ store in allMovies, not searchInput

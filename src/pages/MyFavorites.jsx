@@ -10,9 +10,12 @@ const MyFavorites = () => {
 
   const handleDeleteFavoriteMovie = async (id) => {
     // console.log(id);
-    const response = await fetch(`http://localhost:5000/favMovies/${id}`, {
-      method: 'DELETE',
-    });
+    const response = await fetch(
+      `https://movie-portal-server-931s.onrender.com/favMovies/${id}`,
+      {
+        method: 'DELETE',
+      }
+    );
     const data = await response.json();
     // console.log(data);
     if (data.deletedCount > 0) {
@@ -39,7 +42,9 @@ const MyFavorites = () => {
   // ===============================================
 
   useEffect(() => {
-    fetch(`http://localhost:5000/favMovies?email=${user.email}`)
+    fetch(
+      `https://movie-portal-server-931s.onrender.com/favMovies?email=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);

@@ -34,13 +34,16 @@ const AddMovie = () => {
     };
     // console.log(movieInfo);
     // send movie data to server
-    const res = await fetch(`http://localhost:5000/movies`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(movieInfo),
-    });
+    const res = await fetch(
+      `https://movie-portal-server-931s.onrender.com/movies`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(movieInfo),
+      }
+    );
     const data = await res.json();
     // console.log(data);
     if (data.insertedId) {

@@ -19,18 +19,22 @@ const PublicRouter = createBrowserRouter([
       {
         index: true,
         element: <Home></Home>,
-        loader: () => fetch(`http://localhost:5000/topMovies`),
+        loader: () =>
+          fetch(`https://movie-portal-server-931s.onrender.com/topMovies`),
       },
       {
         path: '/allMovies',
         element: <AllMovies></AllMovies>,
-        loader: () => fetch(`http://localhost:5000/movies`),
+        loader: () =>
+          fetch(`https://movie-portal-server-931s.onrender.com/movies`),
       },
       {
         path: '/movieCardDetails/:id',
         element: <MovieCardDetails></MovieCardDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/movies/${params.id}`),
+          fetch(
+            `https://movie-portal-server-931s.onrender.com/movies/${params.id}`
+          ),
       },
       {
         path: '/addMovie',

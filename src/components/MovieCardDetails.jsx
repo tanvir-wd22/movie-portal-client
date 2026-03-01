@@ -21,13 +21,16 @@ const MovieCardDetails = () => {
     toast.success(`first user ${firstUserEmail} & ${_id} `);
     const favoriteMovieInfo = { ...withoutFirstUserIdEmail, secondUserEmail };
     // console.log(favoriteMovieInfo);
-    const response = await fetch(`http://localhost:5000/favMovies`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(favoriteMovieInfo),
-    });
+    const response = await fetch(
+      `https://movie-portal-server-931s.onrender.com/favMovies`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(favoriteMovieInfo),
+      }
+    );
     const data = await response.json();
     // console.log(data);
     if (data.insertedId) {
@@ -37,9 +40,12 @@ const MovieCardDetails = () => {
 
   const handleDeleteMovie = async (id) => {
     // console.log(id);
-    const res = await fetch(`http://localhost:5000/movies/${id}`, {
-      method: 'DELETE',
-    });
+    const res = await fetch(
+      `https://movie-portal-server-931s.onrender.com/movies/${id}`,
+      {
+        method: 'DELETE',
+      }
+    );
     const data = await res.json();
     // console.log(data);
     if (data.deletedCount > 0) {

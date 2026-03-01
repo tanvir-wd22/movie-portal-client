@@ -2,14 +2,14 @@ const FavoriteMovieCard = ({ movieItem, handleDeleteFavoriteMovie }) => {
   // console.log(movieItem);
   return (
     <div>
-      <div className="card bg-base-100 shadow-sm">
+      <div className="card bg-base-100 shadow-sm h-96">
         <figure>
           <img src={movieItem?.poster} className="h-40 w-full" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">
             {movieItem?.title}
-            <div className="badge badge-secondary">{movieItem?.release}</div>
+            <div className="badge badge-secondary">{movieItem?.rating}</div>
           </h2>
           <p>{movieItem?.summary}</p>
           <div className="card-actions justify-between">
@@ -20,7 +20,7 @@ const FavoriteMovieCard = ({ movieItem, handleDeleteFavoriteMovie }) => {
               Genre : {movieItem?.genre}
             </div>
             <div className="badge badge-xs badge-outline">
-              Rating :{movieItem?.rating}
+              Release :{movieItem?.release}
             </div>
           </div>
           <div className="flex justify-center items-center">

@@ -1,7 +1,13 @@
+import { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { useLoaderData, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../providers/AuthContextProvider';
 
 const MovieCardDetails = () => {
+  const { user } = useContext(AuthContext);
+  // console.log(user);
+  const secondUserEmail = user?.email;
+  // console.log(secondUserEmail);
   const loadedOneMovie = useLoaderData();
   // console.log(loadedOneMovie);
   const navigate = useNavigate();
@@ -11,8 +17,9 @@ const MovieCardDetails = () => {
     console.log(movieInfo);
     // ✅ Always remove _id before inserting into a new collection
     // ✅ Remove _id from movieInfo before sending
-    const { _id, ...withoutPreviousPostId } = movieInfo;
-    const favoriteMovieInfo = { ...withoutPreviousPostId };
+    const { _id, firstUserEmail, ...withoutFirstUserIdEmail } = movieInfo;
+    console.log(_id, firstUserEmail);
+    const favoriteMovieInfo = { ...withoutFirstUserIdEmail, secondUserEmail };
     console.log(favoriteMovieInfo);
     const response = await fetch(`http://localhost:5000/favMovies`, {
       method: 'POST',
@@ -22,7 +29,7 @@ const MovieCardDetails = () => {
       body: JSON.stringify(favoriteMovieInfo),
     });
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     if (data.insertedId) {
       toast.success('add to favorites list done');
     }

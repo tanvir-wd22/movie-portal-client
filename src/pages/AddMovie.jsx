@@ -11,10 +11,10 @@ const AddMovie = () => {
   const handleRatingValue = (rate) => {
     setRating(rate);
   };
- 
+
   const handleAddMovieForm = async (e) => {
     e.preventDefault();
-    const email = user?.email || 'guestUser@mail.com';
+    const firstUserEmail = user?.email;
     const poster = e.target.poster.value;
     const title = e.target.title.value;
     const genre = e.target.genre.value;
@@ -23,7 +23,7 @@ const AddMovie = () => {
     const rating = e.target.rating.value;
     const summary = e.target.summary.value;
     const movieInfo = {
-      email,
+      firstUserEmail,
       poster,
       title,
       genre,

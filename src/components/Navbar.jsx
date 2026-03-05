@@ -33,7 +33,7 @@ const Navbar = () => {
   );
   return (
     <div>
-      <div className="navbar bg-base-300 shadow-sm">
+      <div className="navbar bg-base-300 shadow-sm z-50">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -67,7 +67,7 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
-        <div className="navbar-end items-center gap-2">
+        <div className="navbar-end hidden lg:flex items-center gap-2">
           {user ? (
             <>
               <p>{user?.displayName || "Logged User"}</p>

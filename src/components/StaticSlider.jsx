@@ -1,12 +1,12 @@
-import banner1 from "../assets/banner1.jpg";
-import banner2 from "../assets/banner2.jpg";
-import banner3 from "../assets/banner3.jpg";
+import banner1 from '../assets/banner1.jpg';
+import banner2 from '../assets/banner2.jpg';
+import banner3 from '../assets/banner3.jpg';
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Parallax, Pagination, Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Parallax, Pagination, Navigation } from 'swiper/modules';
 
 /* ============================= */
 /* CSS OUTSIDE COMPONENT */
@@ -83,8 +83,8 @@ export default function StaticSlider() {
 
       <Swiper
         style={{
-          "--swiper-navigation-color": "#fff",
-          "--swiper-pagination-color": "#fff",
+          '--swiper-navigation-color': '#fff',
+          '--swiper-pagination-color': '#fff',
         }}
         speed={600}
         parallax={true}
@@ -101,10 +101,12 @@ export default function StaticSlider() {
             data-swiper-parallax="-23%"
           />
           <div className="title" data-swiper-parallax="-300">
-            Slide 1
+            Zootopia
           </div>
           <div className="subtitle" data-swiper-parallax="-200">
-            Competently extend customized internal or "organic" sources and team building initiatives. Phosfluorescently innovate strategic services.
+            The ultimate odd-couple detective duo is back! Join Judy Hopps and
+            Nick Wilde as they dive into a brand-new, high-stakes mystery in the
+            sprawling, animal-filled metropolis
           </div>
         </SwiperSlide>
 
@@ -116,10 +118,12 @@ export default function StaticSlider() {
             data-swiper-parallax="-23%"
           />
           <div className="title" data-swiper-parallax="-300">
-            Slide 2
+            The Bad Guys
           </div>
           <div className="subtitle" data-swiper-parallax="-200">
-           Competently extend customized internal or "organic" sources and team building initiatives. Phosfluorescently innovate strategic services.
+            They’re trying to be good, but being "bad" is just so much more fun!
+            Follow the world’s most wanted reformed criminals as they’re pulled
+            back for one final, hilarious heist.
           </div>
         </SwiperSlide>
 
@@ -131,10 +135,10 @@ export default function StaticSlider() {
             data-swiper-parallax="-23%"
           />
           <div className="title" data-swiper-parallax="-300">
-            Slide 3
+            Dog Man
           </div>
           <div className="subtitle" data-swiper-parallax="-200">
-            Competently extend customized internal or "organic" sources and team building initiatives. Phosfluorescently innovate strategic services.
+            Half dog, half man, and all hero! Based on the global best-selling sensation, this crime-fighting canine is ready to fetch justice and save the city from his feline arch-nemesis
           </div>
         </SwiperSlide>
       </Swiper>
